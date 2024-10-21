@@ -10,7 +10,7 @@ const Fetch = () => {
     fetch(`https://jsonplaceholder.typicode.com/todos`)
       .then(response => response.json())
       .then((data) => {
-        setData(data); 
+        setData(data);
         setFilteredData(data); 
       });
   }, []);
@@ -20,36 +20,37 @@ const Fetch = () => {
     if (id) {
       setFilteredData(data.filter(item => item.id === id)); 
     } else {
-      setFilteredData(data); 
+      setFilteredData(data);
     }
   };
 
   return (
     <>
-      <div className="container">
-        <h1>Fetched Data</h1>
-        <SearchBar onSearch={handleSearch} />
-        <table border="1">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Completed</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.map(item => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.title}</td>
-                <td>{item.completed ? 'Yes' : 'No'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </>
-  );
+  <div className="container">
+    <h1>Fetched Data</h1>
+    <SearchBar onSearch={handleSearch} />
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredData.map(item => (
+          <tr key={item.id}>
+            <td>{item.id}</td>
+            <td>{item.title}</td>
+            <td>{item.completed ? 'Yes' : 'No'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  </>
+);
+
 };
 
 export default Fetch;
